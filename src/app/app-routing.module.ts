@@ -19,7 +19,7 @@ const routes: Routes = [
     component: FilmesComponent
   },
   {
-    path: 'nave',
+    path: 'naves',
     component: NaveComponent
   }
 ];
