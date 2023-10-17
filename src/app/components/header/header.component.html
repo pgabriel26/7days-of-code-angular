@@ -1,0 +1,18 @@
+<p>
+    <mat-toolbar color="primary">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['home']">Home</button>
+        <button mat-menu-item [routerLink]="['filmes']">Filmes</button>
+        <button mat-menu-item [routerLink]="['naves']">Naves</button>
+        </mat-menu>
+
+        <span>7 Days of code</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button [routerLink]="['home']">
+        <mat-icon>home</mat-icon>
+        </button>
+    </mat-toolbar>
+</p>
