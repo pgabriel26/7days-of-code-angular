@@ -1,0 +1,10 @@
+.tabela-filmes {
+    width: 100%;
+}
+
+.mat-column-episodio {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+  }
