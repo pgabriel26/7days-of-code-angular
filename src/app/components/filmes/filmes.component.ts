@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FilmesService } from './filmes.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-filmes',
@@ -7,4 +9,16 @@ import { Component } from '@angular/core';
 })
 export class FilmesComponent {
 
+  filmes: any;
+
+  constructor ( private service: FilmesService ) {}
+
+  ngOnInit() {
+    this.service.getFilmes().subscribe({
+      next: response => this.filmes = response,
+      complete: () => console.log('Filmes encontrados', this.filmes)
+    } 
+    )
+    
+  }
 }
