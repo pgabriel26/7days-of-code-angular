@@ -14,10 +14,10 @@ import { HttpClientModule } from  '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './components/home/home.component';
-import { FilmesComponent } from './components/filmes/filmes.component';
-import { NaveComponent } from './components/nave/nave.component';
-import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/pages/home/home.component';
+import { FilmesComponent } from './components/pages/filmes/filmes.component';
+import { NaveComponent } from './components/pages/nave/nave.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
