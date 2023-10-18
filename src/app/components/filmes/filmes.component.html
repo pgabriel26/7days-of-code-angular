@@ -1,1 +1,32 @@
-<p>filmes works!</p>
+<div>
+    <table mat-table [dataSource]="filmes.results" class="tabela-filmes">
+        <ng-container matColumnDef="episodio">
+            <th mat-header-cell *matHeaderCellDef> Episódio </th>
+            <td mat-cell *matCellDef="let filme"> {{ filme.episode_id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef> Filme </th>
+            <td mat-cell *matCellDef="let filme"> {{ filme.title }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="diretor">
+            <th mat-header-cell *matHeaderCellDef> Diretor </th>
+            <td mat-cell *matCellDef="let filme"> {{ filme.director }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="produtor">
+            <th mat-header-cell *matHeaderCellDef> Produtor </th>
+            <td mat-cell *matCellDef="let filme"> {{ filme.producer }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="lancamento">
+            <th mat-header-cell *matHeaderCellDef> Lançamento </th>
+            <td mat-cell *matCellDef="let filme"> {{ filme.release_date }} </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

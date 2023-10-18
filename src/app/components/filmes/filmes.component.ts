@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FilmesService } from './filmes.service';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-filmes',
@@ -10,13 +9,17 @@ import { tap } from 'rxjs';
 export class FilmesComponent {
 
   filmes: any;
+  // dataSource = new MatTableDataSource<any>();
+  displayedColumns = ['episodio','nome', 'diretor', 'produtor', 'lancamento']
 
   constructor ( private service: FilmesService ) {}
 
   ngOnInit() {
-    this.service.getFilmes().subscribe({
-      next: response => this.filmes = response,
-      complete: () => console.log('Filmes encontrados', this.filmes)
+    this.service.getFilmes().subscribe( response => {
+      this.filmes = response;
+      console.log('Filmes encontrados', this.filmes.results);
+      // next: response => this.filmes = response,
+      // complete: () => console.log('Filmes encontrados', this.filmes.results)
     } 
     )
     
