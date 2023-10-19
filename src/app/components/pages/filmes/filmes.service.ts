@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Results } from '../../../models/interfaces';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FilmesService {
 
-  private url: string = '/assets/films.json';
+  private url = 'https://swapi.dev/api/films';
 
   constructor( private http: HttpClient ) { }
 
-  getFilmes() {
-    return this.http.get(this.url);
+  getFilmes(): Observable<Results> {
+    return this.http.get<Results>(this.url);
   }
 }

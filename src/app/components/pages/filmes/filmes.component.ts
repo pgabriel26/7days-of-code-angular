@@ -1,5 +1,8 @@
+import { Filme } from './../../../models/interfaces';
 import { Component } from '@angular/core';
 import { FilmesService } from './filmes.service';
+import { Results } from '../../../models/interfaces';
+
 
 @Component({
   selector: 'app-filmes',
@@ -8,20 +11,31 @@ import { FilmesService } from './filmes.service';
 })
 export class FilmesComponent {
 
-  filmes: any;
-  // dataSource = new MatTableDataSource<any>();
+  retorno!: Results;
+  filmes: Filme[] = [];
+    // dataSource = new MatTableDataSource<any>();
   displayedColumns = ['episodio','nome', 'diretor', 'produtor', 'lancamento']
 
   constructor ( private service: FilmesService ) {}
 
-  ngOnInit() {
-    this.service.getFilmes().subscribe( response => {
-      this.filmes = response;
-      console.log('Filmes encontrados', this.filmes.results);
-      // next: response => this.filmes = response,
-      // complete: () => console.log('Filmes encontrados', this.filmes.results)
-    } 
-    )
-    
+  ngOnInit(): void {
+    this.getFilms();
+  }
+
+  getFilms() {
+    this.service.getFilmes().subscribe( 
+      response => {
+        this.retorno = response;
+        this.filmes = this.retorno.results;
+    });
+  }
+
+  formatData(data: string) {
+    const dataObj = new Date(data);
+    return dataObj.toLocaleDateString('pt-BR');
+  }
+
+  loadingPage(): boolean {
+    return this.filmes.length > 0;
   }
 }
