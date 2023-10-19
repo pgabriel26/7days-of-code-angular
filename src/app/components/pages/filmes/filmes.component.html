@@ -22,7 +22,7 @@
 
         <ng-container matColumnDef="lancamento">
             <th mat-header-cell *matHeaderCellDef> Lançamento </th>
-            <td mat-cell *matCellDef="let filme"> {{ filme.release_date }} </td>
+            <td mat-cell *matCellDef="let filme"> {{ formatData(filme.release_date) }} </td>
         </ng-container>
 
 

@@ -19,11 +19,20 @@ export class FilmesComponent {
   constructor ( private service: FilmesService ) {}
 
   ngOnInit(): void {
+    this.getFilms();
+  }
+
+  getFilms() {
     this.service.getFilmes().subscribe( 
       response => {
         this.retorno = response;
         this.filmes = this.retorno.results;
     });
+  }
+
+  formatData(data: string) {
+    const dataObj = new Date(data);
+    return dataObj.toLocaleDateString('pt-BR');
   }
 
   loadingPage(): boolean {
