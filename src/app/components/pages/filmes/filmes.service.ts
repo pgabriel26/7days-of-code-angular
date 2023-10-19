@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class FilmesService {
 
-  private url: string = '/assets/films.json';
+  private url = 'https://swapi.dev/api/films';
 
   constructor( private http: HttpClient ) { }
 
