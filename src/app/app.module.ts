@@ -8,6 +8,10 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from  '@angular/common/http';
 
@@ -38,7 +42,10 @@ import { HeaderComponent } from './shared/components/header/header.component';
     MatButtonModule,
     MatMenuModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    FormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
