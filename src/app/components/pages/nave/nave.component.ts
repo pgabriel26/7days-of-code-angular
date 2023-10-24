@@ -15,8 +15,7 @@ export class NaveComponent {
 
   displayedColumns = ['fabricante','nome','modelo',
                       'tamanho','capacidade','preco',
-                      'equipe','classe','ranking',
-                      'pilotos','filme','criada'];
+                      'equipe','classe','ranking','criada'];
 
   constructor( private service: ApiService) {}
 

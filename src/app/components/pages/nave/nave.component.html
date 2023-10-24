@@ -67,16 +67,6 @@
             <td mat-cell *matCellDef="let nave"> {{ nave.hyperdrive_rating }} </td>
         </ng-container>
 
-        <ng-container matColumnDef="pilotos">
-            <th mat-header-cell *matHeaderCellDef> Pilotos </th>
-            <td mat-cell *matCellDef="let nave"> {{ nave.pilots }} </td>
-        </ng-container>
-
-        <ng-container matColumnDef="filme">
-            <th mat-header-cell *matHeaderCellDef> Filmes </th>
-            <td mat-cell *matCellDef="let nave"> {{ nave.films }} </td>
-        </ng-container>
-
         <ng-container matColumnDef="criada">
             <th mat-header-cell *matHeaderCellDef> Lançamento </th>
             <td mat-cell *matCellDef="let nave"> {{ formatData(nave.created) }} </td>
