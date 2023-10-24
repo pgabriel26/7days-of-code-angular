@@ -1,6 +1,6 @@
+import { ApiService } from './../../../shared/api.service';
 import { Movie } from './../../../models/interfaces';
 import { Component } from '@angular/core';
-import { FilmesService } from './filmes.service';
 import { MovieResults } from '../../../models/interfaces';
 import { NgForm } from '@angular/forms';
 
@@ -14,22 +14,13 @@ export class FilmesComponent {
 
   retorno!: MovieResults;
   filmes: Movie[] = [];
-    // dataSource = new MatTableDataSource<any>();
+  
   displayedColumns = ['episodio','nome', 'diretor', 'produtor', 'lancamento']
 
-  constructor ( private service: FilmesService ) {}
+  constructor ( private service: ApiService ) {}
 
   ngOnInit(): void {
     this.getFilms('');
-  }
-
-  validForm(form: NgForm){
-    if (form.valid){
-      console.log("formulario Ok!");
-    } else {
-      console.log("formulario invalido.");
-      
-    }
   }
 
   callSearch(event: any, form: NgForm){
@@ -61,3 +52,4 @@ export class FilmesComponent {
     return this.filmes.length > 0;
   }
 }
+
