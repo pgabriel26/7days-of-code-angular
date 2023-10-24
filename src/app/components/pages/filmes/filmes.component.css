@@ -7,4 +7,16 @@
     border-right: 1px solid currentColor;
     padding-right: 24px;
     text-align: center;
-  }
+}
+
+.search-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.loading {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    right: 50%;
+}
