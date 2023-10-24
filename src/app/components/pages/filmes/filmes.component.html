@@ -1,3 +1,17 @@
+<div class="search-div">
+    <form class="search-bar" #searchForm="ngForm">
+        <mat-form-field class="example-full-width">
+            <mat-label>Movie search</mat-label>
+            <input 
+                matInput placeholder="A New Hope" 
+                value=""
+                ngModel
+                #search="ngModel"
+                (blur)="callSearch($event, searchForm)"
+            />
+        </mat-form-field>
+    </form>
+</div>
 <div *ngIf="loadingPage(); else loading">
     <table mat-table [dataSource]="filmes" class="tabela-filmes">
         <ng-container matColumnDef="episodio">
@@ -31,5 +45,7 @@
     </table>
 </div>
 <ng-template #loading>
-    <h1>Loading films table</h1>
+    <div class="loading">
+        <mat-spinner></mat-spinner>
+    </div>
 </ng-template>

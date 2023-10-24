@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Results } from '../../../models/interfaces';
+import { MovieResults, PeopleResults } from '../../../models/interfaces';
 import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
@@ -8,11 +8,21 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class FilmesService {
 
-  private url = 'https://swapi.dev/api/films';
+  private url = 'https://swapi.dev/api/';
 
   constructor( private http: HttpClient ) { }
 
-  getFilmes(): Observable<Results> {
-    return this.http.get<Results>(this.url);
+  getFilmes(search: string): Observable<MovieResults> {
+    let tempUrl: string ='';
+    if(search == ''){
+      tempUrl = 'films';
+    } else {
+      tempUrl = `films/?search=${search}`;
+    }
+    return this.http.get<MovieResults>(`${this.url}${tempUrl}`);
+  }
+
+  getPessoas(search: string): Observable<PeopleResults> {
+    return this.http.get<PeopleResults>(this.url + "people/?search=" + search);
   }
 }
