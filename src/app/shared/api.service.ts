@@ -22,15 +22,20 @@ export class ApiService {
     return this.http.get<MovieResults>(`${this.url}${tempUrl}`);
   }
 
-  getNaves(search: string): Observable<StarshipResults> {
+  getNaves(search: string, page?: number): Observable<StarshipResults> {
     let tempUrl: string ='';
-    if(search == ''){
-      tempUrl = 'starships';
+    if(search == '' && page == null ){
+      tempUrl = `starships/?page=1`;
+      console.log("tempUrl = ", tempUrl);
+    } else if (search == '' && page != null)  {
+        tempUrl = `starships/?page=${page}`;
+        console.log("tempUrl = ", tempUrl);
     } else {
       tempUrl = `starships/?search=${search}`;
     }
-    return this.http.get<StarshipResults>(`${this.url}${tempUrl}`);
+    return this.http.get<StarshipResults>(`${this.url}${tempUrl}`)
   }
+
 
   // getPessoas(search: string): Observable<PeopleResults> {
   //   return this.http.get<PeopleResults>(this.url + "people/?search=" + search);
