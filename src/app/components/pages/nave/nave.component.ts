@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { PageEvent } from '@angular/material/paginator';
 import { Starship, StarshipResults } from 'src/app/models/interfaces';
 import { ApiService } from 'src/app/shared/api.service';
 
@@ -12,8 +13,9 @@ export class NaveComponent {
 
   retorno!: StarshipResults;
   naves: Starship[] = [];
+  pagina = 1;
 
-  displayedColumns = ['fabricante','nome','modelo',
+  displayedColumns: string[] = ['fabricante','nome','modelo',
                       'tamanho','capacidade','preco',
                       'equipe','classe','ranking','criada'];
 
@@ -32,10 +34,10 @@ export class NaveComponent {
     }
   }
 
-  getStarships(search: string) {
+  getStarships(search: string, pagina?: number) {
     console.log('buscando naves...');
     
-    this.service.getNaves(search).subscribe( 
+    this.service.getNaves(search, pagina).subscribe( 
       response => {
         this.retorno = response;
         this.naves = this.retorno.results;
@@ -47,6 +49,12 @@ export class NaveComponent {
   formatData(data: string) {
     const dataObj = new Date(data);
     return dataObj.toLocaleDateString('pt-BR');
+  }
+
+  changePagination(e: PageEvent) {
+    this.pagina = e.pageIndex + 1;
+    this.naves = [];
+    this.getStarships('', this.pagina)
   }
 
 }
